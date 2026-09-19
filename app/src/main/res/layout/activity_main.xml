@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="32dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="36dp">
+
+        <!-- Header: App Name and Tagline -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAppTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/text_primary"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAppSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/app_tagline"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnOpenKofiHeader"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/action_support_kofi"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_coffee"
+                    app:tint="@color/nfc_blue_primary" />
+
+                <ImageButton
+                    android:id="@+id/btnOpenSetupHeader"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/action_open_setup"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/text_primary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Estado Principal (Card con transiciones pastel) -->
+        <LinearLayout
+            android:id="@+id/cardStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_status_card_unlocked"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_unlocked"
+                    android:text="@string/badge_unlocked"
+                    android:textColor="@color/pastel_green_dark"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/ivStatusIcon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/badge_unlocked"
+                    android:src="@drawable/ic_lock_open" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvStatusTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/status_unlocked_title"
+                android:textColor="@color/pastel_green_dark"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStatusSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/status_unlocked_subtitle"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="14dp"
+                android:background="#1F000000" />
+
+            <!-- Apps configuradas para bloqueo -->
+            <TextView
+                android:id="@+id/tvBlockedSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/blocked_summary_zero"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Modo de bloqueo activo -->
+            <TextView
+                android:id="@+id/tvCurrentLockModeBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Tarjeta de Bloqueo Real de Apps (Servicio de Accesibilidad) -->
+        <LinearLayout
+            android:id="@+id/cardAccessibilityService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivAccessibilityIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Bloqueo Real"
+                    android:src="@drawable/ic_lock_closed"
+                    app:tint="@color/pastel_red_primary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/accessibility_card_title"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEnableAccessibility"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accessibility_btn_enable"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvAccessibilityStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/accessibility_status_inactive"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTestOverlay"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="10dp"
+                android:text="Vista Previa de Pantalla de Bloqueo (Overlay)"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+
+        <!-- Tarjeta de Estado del Hardware NFC (Fase 2) -->
+        <LinearLayout
+            android:id="@+id/cardNfcHardwareStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivNfcHardwareIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="NFC Hardware"
+                    android:src="@drawable/ic_nfc"
+                    app:tint="@color/nfc_blue_primary" />
+
+                <TextView
+                    android:id="@+id/tvNfcHardwareStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/nfc_status_ready"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEnableNfcSettings"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nfc_enable_settings_action"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvNfcHardwareDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/nfc_listening_banner"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvLastScannedTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/pastel_green_primary"
+                android:textSize="11sp"
+                android:textStyle="italic"
+                android:visibility="gone"
+                tools:text="Último Tag: A1:B2:C3:D4" />
+        </LinearLayout>
+
+        <!-- Tarjeta de Llave y Vinculación NFC Exclusiva -->
+        <LinearLayout
+            android:id="@+id/cardNfcKeyManagement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Llave NFC"
+                    android:src="@drawable/ic_key"
+                    app:tint="@color/text_primary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/nfc_section_key_title"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPairedTagBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_unlocked"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/nfc_paired_badge_none"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPairedTagDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/nfc_no_paired_tag_desc"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <!-- Lista Dinámica de Tarjetas Vinculadas -->
+            <LinearLayout
+                android:id="@+id/containerPairedCardsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <!-- Clave de Seguridad y Botón de Edición -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_code_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nfc_key_label"
+                        android:textColor="@color/text_muted"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tvSecretKeyDisplay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="FB-948271" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditSecretKey"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambiar"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Banner visible durante el modo grabación/programación -->
+            <LinearLayout
+                android:id="@+id/containerProgrammingBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_nfc_programming"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:indeterminate="true" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/nfc_programming_active_hint"
+                    android:textColor="#B78103"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Botones de Acción: Programar y Desvincular -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProgramTag"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/nfc_blue_primary"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/nfc_btn_program_tag"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_nfc"
+                    app:iconGravity="textStart"
+                    app:iconPadding="6dp"
+                    app:iconTint="@color/white" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUnlinkTag"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/nfc_btn_unlink_tag"
+                    android:textAllCaps="false"
+                    android:textColor="@color/pastel_red_primary"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/pastel_red_border" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddSimulatedCard"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="6dp"
+                android:text="@string/setup_nfc_btn_add_simulated"
+                android:textAllCaps="false"
+                android:textColor="@color/nfc_blue_primary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Botón: Simulación NFC (para pruebas/emulador) -->
+        <LinearLayout
+            android:id="@+id/btnSimulateNfc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_button_nfc"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/btn_simulate_nfc"
+                android:src="@drawable/ic_nfc" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvNfcButtonTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_simulate_nfc"
+                    android:textColor="@color/nfc_blue_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvNfcButtonDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/btn_simulate_nfc_desc"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Botón: Configuración de Aplicaciones -->
+        <LinearLayout
+            android:id="@+id/btnManageApps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card_white"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:contentDescription="@string/btn_configure_apps"
+                android:src="@drawable/ic_apps" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_configure_apps"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/btn_configure_apps_desc"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="Ir"
+                android:rotation="180"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/text_muted" />
+        </LinearLayout>
+
+        <!-- Sección: Botón de Emergencia (30 segundos continuo) -->
+        <LinearLayout
+            android:id="@+id/cardEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_emergency_container"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@string/emergency_section_title"
+                    android:src="@drawable/ic_timer" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/emergency_section_title"
+                    android:textColor="@color/pastel_red_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvEmergencyInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/emergency_instruction"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <!-- Barra de Progreso de 30 segundos -->
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressBarEmergency"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="16dp"
+                android:max="300"
+                android:progress="0"
+                app:indicatorColor="@color/emergency_progress_fill"
+                app:trackColor="@color/emergency_progress_bg"
+                app:trackCornerRadius="5dp"
+                app:trackThickness="10dp" />
+
+            <TextView
+                android:id="@+id/tvEmergencyTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="6dp"
+                android:text="0.0s / 30.0s"
+                android:textColor="@color/pastel_red_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Botón de Presión Continua -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEmergencyHold"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/pastel_red_primary"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/emergency_btn_idle"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:icon="@drawable/ic_timer"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

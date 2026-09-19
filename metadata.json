@@ -1,0 +1,6 @@
+{
+  "name": "TagLock",
+  "description": "Minimalist NFC-powered app blocker with exclusive tag pairing, live accessibility overlay blocker, circular remaining time countdown, and 30s emergency unlock",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

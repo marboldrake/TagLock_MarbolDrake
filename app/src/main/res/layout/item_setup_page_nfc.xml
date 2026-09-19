@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="28dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="24dp">
+
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:contentDescription="NFC Tag"
+            android:src="@drawable/ic_nfc"
+            app:tint="@color/nfc_blue_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/setup_nfc_title"
+            android:textAlignment="center"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/setup_nfc_multi_subtitle"
+            android:textAlignment="center"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <!-- Tarjeta de Estado del Escaneo y Lista de Tarjetas Vinculadas -->
+        <LinearLayout
+            android:id="@+id/cardNfcScanStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivNfcScanIcon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:contentDescription="Estado NFC"
+                    android:src="@drawable/ic_nfc"
+                    app:tint="@color/nfc_blue_primary" />
+
+                <TextView
+                    android:id="@+id/tvNfcScanStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/setup_nfc_status_waiting"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvNfcScanTagId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_code_pill"
+                    android:paddingStart="12dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/nfc_blue_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Contenedor dinámico de tarjetas vinculadas -->
+            <LinearLayout
+                android:id="@+id/containerSetupCardsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:lineSpacingExtra="2dp"
+            android:text="@string/setup_nfc_hint"
+            android:textAlignment="center"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <!-- Botones de Acción: Simulación de Tarjeta / Añadir otra tarjeta -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSimulateInitialTag"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/setup_nfc_btn_simulate"
+            android:textAllCaps="false"
+            android:textColor="@color/nfc_blue_primary"
+            android:textSize="13sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_nfc"
+            app:iconGravity="textStart"
+            app:iconTint="@color/nfc_blue_primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddAnotherSimulatedTag"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/setup_nfc_btn_add_simulated"
+            android:textAllCaps="false"
+            android:textColor="@color/nfc_blue_primary"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</ScrollView>

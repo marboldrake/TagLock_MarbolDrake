@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TagLock</string>
+    <string name="app_tagline">Control de Enfoque y Bloqueo NFC</string>
+
+    <!-- Estado principal -->
+    <string name="status_unlocked_title">Modo Libre</string>
+    <string name="status_unlocked_subtitle">Las aplicaciones bloqueadas están disponibles libremente. Usa el botón de simulación NFC para activar el modo de enfoque.</string>
+    <string name="status_locked_title">Bloqueo Activo</string>
+    <string name="status_locked_subtitle">Modo de enfoque en curso. Para desbloquear, simula el toque NFC o mantén pulsado el botón de emergencia por 30s.</string>
+    <string name="badge_unlocked">DESBLOQUEADO</string>
+    <string name="badge_locked">BLOQUEO ENFOCADO</string>
+
+    <!-- Acciones -->
+    <string name="btn_configure_apps">Configurar aplicaciones a bloquear</string>
+    <string name="btn_configure_apps_desc">Selecciona qué aplicaciones no podrás abrir mientras el bloqueo esté activo.</string>
+    <string name="btn_simulate_nfc">Simular Toque de Tag NFC</string>
+    <string name="btn_simulate_nfc_desc">Simula el hardware NFC (útil para pruebas y emulador)</string>
+
+    <!-- NFC Hardware Status & Actions -->
+    <string name="nfc_status_ready">NFC Físico Disponible y Listo</string>
+    <string name="nfc_status_disabled">NFC Desactivado en el Dispositivo</string>
+    <string name="nfc_status_not_supported">Hardware NFC no detectado (usa Simulación)</string>
+    <string name="nfc_enable_settings_action">Activar en Ajustes</string>
+    <string name="nfc_tag_detected_title">¡Tag NFC Detectado!</string>
+    <string name="nfc_tag_id_format">ID del Tag: %1$s</string>
+    <string name="nfc_hardware_tag_locked">Tag NFC físico: ¡Bloqueo de enfoque activado!</string>
+    <string name="nfc_hardware_tag_unlocked">Tag NFC físico: ¡Bloqueo de enfoque liberado!</string>
+    <string name="nfc_listening_banner">Acerca tu tarjeta o llavero NFC al dispositivo para alternar el bloqueo</string>
+
+    <!-- NFC Pairing & Key Management -->
+    <string name="nfc_section_key_title">Llave NFC Exclusiva</string>
+    <string name="nfc_paired_badge_active">Tag Vinculado y Protegido</string>
+    <string name="nfc_paired_badge_none">Sin Tag Vinculado</string>
+    <string name="nfc_key_label">Clave de Seguridad FocusBlock:</string>
+    <string name="nfc_paired_tag_label">UID Autorizado: %1$s</string>
+    <string name="nfc_no_paired_tag_desc">Cualquier tag NFC puede interactuar hasta que programes y vincules tu tag exclusivo.</string>
+    <string name="nfc_btn_program_tag">Grabar Clave e ID en Tag NFC</string>
+    <string name="nfc_btn_cancel_program">Cancelar Grabación</string>
+    <string name="nfc_btn_unlink_tag">Desvincular Tag</string>
+    <string name="nfc_programming_active_hint">MODO GRABACIÓN ACTIVO: Acerca tu tarjeta o tag NFC ahora para instalarle la clave de FocusBlock y vincularlo.</string>
+    <string name="nfc_program_success_toast">¡Tag grabado y vinculado con éxito! Ahora solo este tag controlará el bloqueo y abrirá FocusBlock automáticamente.</string>
+    <string name="nfc_program_error_toast">Error al grabar tag: %1$s</string>
+    <string name="nfc_tag_unauthorized_toast">Tag NFC no autorizado: No coincide con la llave exclusiva configurada.</string>
+    <string name="nfc_tag_unlinked_toast">Tag desvinculado. Puedes grabar un nuevo tag cuando desees.</string>
+    <string name="dialog_change_key_title">Clave Secreta FocusBlock</string>
+    <string name="dialog_change_key_msg">Introduce la clave alfanumérica única que se grabará en tu tag NFC:</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+
+    <!-- Botón de emergencia -->
+    <string name="emergency_section_title">Desbloqueo de Emergencia</string>
+    <string name="emergency_btn_idle">Mantén presionado para desbloquear (30s)</string>
+    <string name="emergency_btn_holding">Manteniendo... %1$d / 30s</string>
+    <string name="emergency_instruction">Debes mantener el dedo pulsado sin levantarlo durante 30 segundos continuos. Si lo sueltas antes, el temporizador se reiniciará a cero.</string>
+    <string name="emergency_cancelled_toast">Cancelado: soltaste el botón antes de los 30 segundos.</string>
+    <string name="emergency_unlocked_toast">¡Desbloqueo de emergencia completado con éxito!</string>
+    <string name="nfc_locked_toast">Tag NFC simulado: ¡Bloqueo activado!</string>
+    <string name="nfc_unlocked_toast">Tag NFC simulado: ¡Bloqueo liberado!</string>
+
+    <!-- Pantalla Selección de Apps -->
+    <string name="title_app_list">Aplicaciones Bloqueadas</string>
+    <string name="btn_back">Volver</string>
+    <string name="search_apps_hint">Buscar aplicación instalada...</string>
+    <string name="selected_apps_count">%1$d de %2$d apps seleccionadas</string>
+    <string name="no_apps_found">No se encontraron aplicaciones que coincidan con la búsqueda.</string>
+    <string name="btn_save_and_back">Guardar y volver</string>
+    <string name="apps_saved_toast">Lista de aplicaciones guardada correctamente.</string>
+
+    <!-- Resumen -->
+    <string name="blocked_summary_zero">Ninguna aplicación seleccionada para bloqueo.</string>
+    <string name="blocked_summary_count">%1$d aplicación(es) seleccionada(s) para bloquear.</string>
+
+    <!-- Servicio de Bloqueo en Tiempo Real (Accessibility) -->
+    <string name="accessibility_card_title">Bloqueo Real de Aplicaciones</string>
+    <string name="accessibility_status_active">Servicio Activo: Las apps seleccionadas serán bloqueadas</string>
+    <string name="accessibility_status_inactive">Servicio Inactivo: Actívalo para que Android intercepte las apps</string>
+    <string name="accessibility_btn_enable">Activar Permiso</string>
+    <string name="accessibility_service_name">TagLock Servicio de Bloqueo</string>
+    <string name="accessibility_service_description">Permite a TagLock detectar cuando abres una aplicación seleccionada para restringir su acceso y mostrar la pantalla de enfoque.</string>
+
+    <!-- Overlay de Bloqueo de App -->
+    <string name="overlay_restricted_badge">APLICACIÓN BLOQUEADA</string>
+    <string name="overlay_default_app_name">Esta Aplicación</string>
+    <string name="overlay_remaining_title">Tiempo restante de enfoque</string>
+    <string name="overlay_remaining_time_format" formatted="false">%02d:%02d</string>
+    <string name="overlay_session_active_desc">Mantén tu concentración. La aplicación permanecerá bloqueada hasta que termine el tiempo o acerques tu Tag NFC.</string>
+    <string name="overlay_nfc_hint">O acerca tu Tag NFC para desbloquear de inmediato</string>
+    <string name="overlay_btn_exit_home">Volver al Inicio</string>
+    <string name="overlay_emergency_title">¿Emergencia Real?</string>
+    <string name="overlay_emergency_hold_btn">Mantén presionado para desbloquear (30s)</string>
+    <string name="overlay_emergency_holding_btn">Manteniendo... %1$d / 30s</string>
+    <string name="overlay_emergency_unlocked_toast">¡Bloqueo liberado por modo de emergencia!</string>
+
+    <!-- Onboarding Setup Strings -->
+    <string name="setup_btn_next">Siguiente</string>
+    <string name="setup_btn_prev">Anterior</string>
+    <string name="setup_btn_finish">Comenzar a usar TagLock</string>
+    <string name="setup_btn_skip_nfc">Omitir por ahora</string>
+
+    <!-- Step 1: Welcome -->
+    <string name="setup_welcome_badge">CONFIGURACIÓN INICIAL</string>
+    <string name="setup_welcome_title">Bienvenido a TagLock</string>
+    <string name="setup_welcome_subtitle">Tu compañero de concentración física y digital. Bloquea distracciones y mantén el control con tu Tag NFC.</string>
+    <string name="setup_welcome_feature1_title">Control Físico Real</string>
+    <string name="setup_welcome_feature1_desc">Solo tu tarjeta o llavero NFC podrá liberar el acceso a las aplicaciones bloqueadas.</string>
+    <string name="setup_welcome_feature2_title">Temporizador y Emergencia</string>
+    <string name="setup_welcome_feature2_desc">Monitorea el tiempo de enfoque y cuenta con un botón de 30 segundos continuos para urgencias.</string>
+    <string name="setup_welcome_feature3_title">Personalización Completa</string>
+    <string name="setup_welcome_feature3_desc">Configura tu tema preferido, idioma y vincula tu llave exclusiva en este breve asistente.</string>
+
+    <!-- Step 2: Theme Selection -->
+    <string name="setup_theme_title">Elige tu Tema Visual</string>
+    <string name="setup_theme_subtitle">Selecciona la apariencia que mejor se adapte a tu vista y preferencias de estilo.</string>
+    <string name="setup_theme_light_title">Tema Claro</string>
+    <string name="setup_theme_light_desc">Limpio, brillante y con contrastes suaves.</string>
+    <string name="setup_theme_dark_title">Tema Oscuro</string>
+    <string name="setup_theme_dark_desc">Agradable a la vista y optimizado para ahorrar batería.</string>
+    <string name="setup_theme_system_title">Predeterminado del Sistema</string>
+    <string name="setup_theme_system_desc">Se adapta automáticamente a la configuración de Android.</string>
+
+    <!-- Step 3: Language Selection -->
+    <string name="setup_lang_title">Selecciona tu Idioma</string>
+    <string name="setup_lang_subtitle">Elige el idioma en el que deseas interactuar con TagLock.</string>
+    <string name="setup_lang_es_title">Español</string>
+    <string name="setup_lang_es_desc">Idioma nativo de la aplicación</string>
+    <string name="setup_lang_en_title">English</string>
+    <string name="setup_lang_en_desc">English language</string>
+    <string name="setup_lang_system_title">Idioma del Sistema</string>
+    <string name="setup_lang_system_desc">Usar el idioma configurado en tu teléfono</string>
+
+    <!-- Step 4: Initial NFC Tag Scanning -->
+    <string name="setup_nfc_title">Escanear Tag Inicial</string>
+    <string name="setup_nfc_subtitle">Acerca tu tarjeta, llavero o sticker NFC a la parte trasera del teléfono para registrar tu llave exclusiva.</string>
+    <string name="setup_nfc_status_waiting">Esperando Tag NFC...</string>
+    <string name="setup_nfc_status_paired">¡Tag detectado y emparejado con éxito!</string>
+    <string name="setup_nfc_hint">Puedes acercar tu tag ahora o hacer clic en \'Simular Tag de Prueba\' si estás en un emulador o no tienes tu tarjeta cerca.</string>
+    <string name="setup_nfc_btn_simulate">Simular Tag Inicial</string>
+
+    <!-- Step 5: Sources & Support Ko-fi -->
+    <string name="setup_support_title">Fuentes y Soporte</string>
+    <string name="setup_support_subtitle">Proyecto independiente creado para impulsar tu productividad.</string>
+    <string name="setup_support_creator_label">Desarrollado con dedicación</string>
+    <string name="setup_support_kofi_title">Apóyame en Ko-fi</string>
+    <string name="setup_support_kofi_id">Ko-fi.com/Marbol077</string>
+    <string name="setup_support_kofi_desc">Si TagLock te ayuda a concentrarte y reducir el tiempo en pantalla, puedes invitarme a un café o apoyar el desarrollo.</string>
+    <string name="setup_support_btn_open_kofi">Abrir Ko-fi.com/Marbol077</string>
+    <string name="setup_support_btn_copy">Copiar Enlace</string>
+    <string name="setup_support_copied_toast">Enlace de Ko-fi copiado al portapapeles</string>
+
+    <!-- Main Activity Settings / Reopen Setup Action -->
+    <string name="action_open_setup">Asistente de Configuración</string>
+    <string name="action_support_kofi">Soporte (Ko-fi)</string>
+
+    <!-- Notificaciones Push y Tiempo Restante -->
+    <string name="notification_channel_name">Sesiones de Enfoque TagLock</string>
+    <string name="notification_channel_desc">Alertas de activación, desactivación y tiempo restante de sesiones de bloqueo</string>
+    <string name="notification_locked_title">🔒 ¡Bloqueo de Enfoque Activado!</string>
+    <string name="notification_locked_msg">Sesión iniciada. Tus aplicaciones seleccionadas han sido restringidas.</string>
+    <string name="notification_unlocked_title">🔓 Bloqueo Desactivado</string>
+    <string name="notification_unlocked_msg">Las aplicaciones seleccionadas han sido liberadas libremente.</string>
+    <string name="notification_timer_title">⏳ Enfoque en curso: %1$s restantes</string>
+    <string name="notification_timer_subtitle">Toca para abrir la pantalla de bloqueo o usa +5 min</string>
+    <string name="notification_locked_nfc_only_title">🔒 Bloqueo Activo · Solo Tarjeta NFC</string>
+    <string name="notification_locked_nfc_only_msg">Sin tiempo límite. Acerca tu tarjeta NFC autorizada para desbloquear.</string>
+    <string name="notification_locked_emergency_only_title">🔒 Bloqueo Activo · Botón de Emergencia</string>
+    <string name="notification_locked_emergency_only_msg">Sin tiempo límite. Desbloquea con el botón de emergencia de 30s.</string>
+    <string name="notification_action_add_5min">+5 min Enfoque</string>
+    <string name="notification_extended_toast">¡Sesión extendida +5 minutos con éxito!</string>
+
+    <!-- Overlay & Time Extension -->
+    <string name="btn_add_5min">+5 min</string>
+    <string name="btn_add_5min_desc">Aumentar tiempo de enfoque en intervalos de +5 minutos (nunca bajar)</string>
+    <string name="overlay_increase_time_btn">+5 min Más de Enfoque</string>
+    <string name="overlay_cannot_decrease_hint">El tiempo solo puede extenderse para reforzar tu disciplina (nunca reducir)</string>
+
+    <!-- Step Permissions en Onboarding -->
+    <string name="setup_perms_title">Permisos de Android</string>
+    <string name="setup_perms_subtitle">TagLock requiere permisos del sistema para notificarte el estado y protegerte de distracciones.</string>
+    <string name="setup_perm_notifications_title">Notificaciones Push</string>
+    <string name="setup_perm_notifications_desc">Para mostrarte alertas de estado activo/inactivo y el tiempo restante de enfoque con el botón de +5m.</string>
+    <string name="setup_perm_accessibility_title">Servicio de Accesibilidad</string>
+    <string name="setup_perm_accessibility_desc">Permite a TagLock interceptar en tiempo real la apertura de tus aplicaciones bloqueadas.</string>
+    <string name="setup_perm_btn_grant">Permitir</string>
+    <string name="setup_perm_granted">Concedido ✓</string>
+
+    <!-- Easter Egg & Padlock Runner -->
+    <string name="easter_egg_activated_title">☕ ¡Modo Barista Legendario Desbloqueado!</string>
+    <string name="easter_egg_activated_msg">¡Has descubierto el secreto de Marbol077! Has recibido 77 puntos de concentración y la bendición del café eterno.</string>
+    <string name="easter_egg_hint_steps">Estás a %1$d toques del modo secreto...</string>
+    <string name="easter_egg_unlocked_toast">¡Modo Secreto Desbloqueado! Bienvenido a TagLock Runner.</string>
+    <string name="runner_game_title">TagLock Runner</string>
+    <string name="runner_game_subtitle">Evita las distracciones digitales y mantén tu concentración</string>
+    <string name="runner_game_tap_to_jump">Toca la pantalla para saltar y esquivar las distracciones</string>
+    <string name="runner_score_label">Puntuación: %1$d</string>
+    <string name="runner_high_score_label">Récord: %1$d</string>
+    <string name="runner_score_zero">Puntuación: 0</string>
+    <string name="runner_high_score_zero">Récord: 0</string>
+    <string name="runner_btn_restart">Reiniciar</string>
+    <string name="creator_nickname">Marbol077</string>
+    <string name="creator_role">Creador y Desarrollador de TagLock</string>
+    <string name="creator_bio_desc">TagLock fue concebido con el objetivo de recuperar el control consciente de la atención digital, utilizando llaves físicas NFC y bloqueos del sistema inquebrantables para evitar la procrastinación en Android.</string>
+    <string name="creator_github_btn">Ver en GitHub</string>
+    <string name="creator_kofi_btn">Apoyar en Ko-fi</string>
+    <string name="creator_copied_toast">Enlace copiado al portapapeles</string>
+    <string name="credits_title">Créditos</string>
+    <string name="credits_desc">Desarrollado y creado por Marbol077.</string>
+
+    <!-- Setup NFC Programming & Authorization -->
+    <string name="setup_nfc_paired_and_written">¡Tag grabado con clave de seguridad y vinculado con éxito!</string>
+    <string name="setup_nfc_paired_uid_only">Tag vinculado por UID: %1$s</string>
+
+    <!-- Verificación obligatoria de permisos para bloqueo y avance -->
+    <string name="setup_perms_required_toast">Debes conceder los permisos de Notificaciones y Accesibilidad para poder continuar.</string>
+    <string name="error_permissions_required_to_lock">No puedes iniciar el bloqueo: los permisos requeridos de Android no están activos. Ve a Configuración para concederlos.</string>
+    <string name="error_no_apps_selected_to_lock">No puedes iniciar el bloqueo: debes seleccionar al menos una aplicación para bloquear.</string>
+    <string name="error_no_apps_selected_dialog_title">Selecciona Aplicaciones Primero</string>
+    <string name="error_no_apps_selected_dialog_msg">Antes de iniciar el bloqueo con tu tarjeta NFC debes elegir al menos una aplicación para restringir.</string>
+    <string name="btn_select_apps">Elegir Apps</string>
+
+    <!-- Múltiples Tarjetas NFC -->
+    <string name="nfc_multi_cards_title">Tarjetas Vinculadas (%1$d)</string>
+    <string name="nfc_btn_add_another_card">+ Vincular Otra Tarjeta</string>
+    <string name="nfc_card_delete_confirm">¿Deseas desvincular \"%1$s\" (UID: %2$s)?</string>
+    <string name="nfc_card_added_toast">✓ Tarjeta \"%1$s\" vinculada con éxito.</string>
+    <string name="nfc_card_deleted_toast">Tarjeta desvinculada.</string>
+    <string name="setup_nfc_multi_subtitle">Puedes vincular una o varias tarjetas físicas (ej. una principal y otra de respaldo).</string>
+    <string name="setup_nfc_btn_add_simulated">+ Vincular Otra Tarjeta (Simulada)</string>
+
+    <!-- Diálogo Selector de Tipo de Bloqueo -->
+    <string name="lock_mode_dialog_title">Elige el Tipo de Bloqueo</string>
+    <string name="lock_mode_dialog_subtitle">Define cómo deseas finalizar tu sesión de concentración. Puedes editarlo después.</string>
+    
+    <string name="lock_mode_timer_title">Por Tiempo</string>
+    <string name="lock_mode_timer_desc">Finaliza al terminar la cuenta atrás, con opción de aumentar +5 min.</string>
+    
+    <string name="lock_mode_nfc_only_title">Sin tiempo (Solo Tarjeta NFC)</string>
+    <string name="lock_mode_nfc_only_desc">Sin límite de tiempo. Solo se puede desbloquear acercando tu tarjeta NFC autorizada.</string>
+    
+    <string name="lock_mode_emergency_only_title">Solo Botón de Emergencia</string>
+    <string name="lock_mode_emergency_only_desc">Sin tiempo. Solo se puede desbloquear manteniendo presionado el botón de emergencia por 30s.</string>
+    
+    <string name="lock_mode_time_preset_label">Duración de la sesión:</string>
+    <string name="lock_mode_preset_15">15 min</string>
+    <string name="lock_mode_preset_30">30 min</string>
+    <string name="lock_mode_preset_60">60 min</string>
+    <string name="lock_mode_preset_custom">Personalizado</string>
+    <string name="lock_mode_custom_hint">Minutos (ej. 45)</string>
+    <string name="lock_mode_btn_confirm">Guardar y Aplicar</string>
+
+    <!-- Textos informativos de modo activo en Overlay y MainActivity -->
+    <string name="overlay_mode_badge_timer">MODO TEMPORIZADOR</string>
+    <string name="overlay_mode_badge_nfc_only">MODO INDEFINIDO · SOLO TARJETA NFC</string>
+    <string name="overlay_mode_badge_emergency_only">MODO INDEFINIDO · SOLO BOTÓN EMERGENCIA</string>
+    <string name="overlay_nfc_only_instruction">Este bloqueo no tiene límite de tiempo. Acerca tu tarjeta o tag NFC autorizado para liberar las aplicaciones.</string>
+    <string name="overlay_emergency_only_instruction">Este bloqueo no tiene límite de tiempo ni admite tarjeta. Mantén presionado el botón de emergencia 30 segundos continuos para liberar las aplicaciones.</string>
+
+    <!-- Mención de tipos de bloqueo en el Onboarding Inicial -->
+    <string name="setup_welcome_feature4_title">Modos de Bloqueo Flexibles</string>
+    <string name="setup_welcome_feature4_desc">Elige entre bloqueo por tiempo, exclusivo con tarjeta NFC o mediante botón de emergencia al guardar tus aplicaciones.</string>
+</resources>

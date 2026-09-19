@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/easterEggRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_surface"
+        app:elevation="1dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarEasterEgg"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/text_primary"
+            app:title="@string/runner_game_title"
+            app:titleTextColor="@color/text_primary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- HUD de Puntuación del Mini-Juego -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvRunnerScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/runner_score_zero"
+                        android:textColor="@color/nfc_blue_primary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRunnerHighScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/runner_high_score_zero"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Botón Reiniciar Partida -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRestartRunner"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/runner_btn_restart"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_timer"
+                    app:iconGravity="textStart" />
+            </LinearLayout>
+
+            <!-- Contenedor del Juego Padlock Runner (Estilo Chrome Dino) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/divider"
+                app:strokeWidth="1dp">
+
+                <com.example.ui.easteregg.PadlockRunnerView
+                    android:id="@+id/padlockRunnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pista de Instrucciones de Juego -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/runner_game_tap_to_jump"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@color/divider" />
+
+            <!-- Sección de Biografía del Creador y Proyecto -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/divider"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_code_pill"
+                            android:contentDescription="Creador"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_shield"
+                            app:tint="@color/nfc_blue_primary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/creator_nickname"
+                                android:textColor="@color/text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/creator_role"
+                                android:textColor="@color/nfc_blue_primary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:lineSpacingExtra="3dp"
+                        android:text="@string/creator_bio_desc"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <!-- Tarjeta del Repositorio de GitHub -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/bg_option_card_unselected"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:contentDescription="GitHub"
+                            android:src="@drawable/ic_github"
+                            app:tint="@color/text_primary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="GitHub Repository"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="https://github.com/arafay1707/TagLock"
+                                android:textColor="@color/text_muted"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:id="@+id/btnCopyGithubUrl"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="Copiar enlace"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_copy"
+                            app:tint="@color/text_secondary" />
+                    </LinearLayout>
+
+                    <!-- Botones de Acción: Abrir GitHub y Ko-fi -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOpenGithub"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/button_dark"
+                            android:text="@string/creator_github_btn"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            app:cornerRadius="10dp"
+                            app:icon="@drawable/ic_open_in_new"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/white" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOpenKofi"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/nfc_blue_bg"
+                            android:text="@string/creator_kofi_btn"
+                            android:textAllCaps="false"
+                            android:textColor="@color/nfc_blue_primary"
+                            android:textSize="13sp"
+                            app:cornerRadius="10dp"
+                            app:icon="@drawable/ic_coffee"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/nfc_blue_primary" />
+                    </LinearLayout>
+
+                    <!-- Créditos de Plataforma y Tecnología -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/bg_card_white"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/credits_title"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/credits_desc"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

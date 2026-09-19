@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/setupRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen"
+    android:orientation="vertical">
+
+    <!-- Top App Bar / Progress Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp">
+
+        <ImageButton
+            android:id="@+id/btnHeaderBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/btn_back"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tvStepIndicator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="Paso 1 de 5"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSkipSetup"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Omitir"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Linear Step Progress Bar -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/stepProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:max="6"
+        android:progress="1"
+        app:indicatorColor="@color/nfc_blue_primary"
+        app:trackColor="@color/divider"
+        app:trackCornerRadius="2dp" />
+
+    <!-- ViewPager2 for the 5 pages -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerSetup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_surface"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPrevStep"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:text="@string/setup_btn_prev"
+            android:textAllCaps="false"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:cornerRadius="12dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNextStep"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:backgroundTint="@color/nfc_blue_primary"
+            android:minWidth="140dp"
+            android:text="@string/setup_btn_next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+    </LinearLayout>
+
+</LinearLayout>

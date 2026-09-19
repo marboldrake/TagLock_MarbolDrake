@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Declaración de queries para consultar aplicaciones con interfaz de usuario (Android 11+) -->
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FocusBlock">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Intent filter para detectar tags NFC escaneados -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/vnd.com.example.focusblock.key" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".AppListActivity"
+            android:exported="false"
+            android:label="@string/title_app_list" />
+
+        <!-- Asistente de Configuración Inicial (Onboarding Setup) -->
+        <activity
+            android:name="com.example.ui.setup.InitialSetupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FocusBlock" />
+
+        <!-- Overlay de Bloqueo de Aplicaciones -->
+        <activity
+            android:name="com.example.ui.overlay.BlockOverlayActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.FocusBlock" />
+
+        <!-- Easter Egg: Mini-Juego Runner & Biografía -->
+        <activity
+            android:name="com.example.ui.easteregg.EasterEggActivity"
+            android:exported="false"
+            android:label="@string/runner_game_title"
+            android:theme="@style/Theme.FocusBlock" />
+
+        <!-- Servicio de Accesibilidad para Bloqueo en Tiempo Real -->
+        <service
+            android:name="com.example.service.AppBlockerAccessibilityService"
+            android:exported="false"
+            android:label="@string/accessibility_service_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- Receptor para acciones de notificación (+5 minutos de enfoque) -->
+        <receiver
+            android:name="com.example.notification.NotificationActionReceiver"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

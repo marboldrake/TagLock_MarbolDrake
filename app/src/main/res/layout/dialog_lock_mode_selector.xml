@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lock_mode_dialog_title"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDialogSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/lock_mode_dialog_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <!-- Opción 1: Por Tiempo -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardModeTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/nfc_blue_primary"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbModeTimer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lock_mode_timer_title"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/lock_mode_timer_desc"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Subsección para elegir presets o custom -->
+                <LinearLayout
+                    android:id="@+id/layoutTimerPresets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lock_mode_time_preset_label"
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupTimerPresets"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipPreset15"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lock_mode_preset_15" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipPreset30"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lock_mode_preset_30" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipPreset60"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lock_mode_preset_60" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipPresetCustom"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lock_mode_preset_custom" />
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCustomMinutes"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/lock_mode_custom_hint"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCustomMinutes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLength="4" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Opción 2: Sin tiempo, Solo Tarjeta NFC -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardModeNfcOnly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/divider"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <RadioButton
+                    android:id="@+id/rbModeNfcOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lock_mode_nfc_only_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/lock_mode_nfc_only_desc"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Opción 3: Solo Botón de Emergencia -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardModeEmergencyOnly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/divider"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <RadioButton
+                    android:id="@+id/rbModeEmergencyOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lock_mode_emergency_only_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/lock_mode_emergency_only_desc"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

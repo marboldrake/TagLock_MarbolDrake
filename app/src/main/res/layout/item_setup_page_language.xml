@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="28dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="24dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="Idioma"
+            android:src="@drawable/ic_language"
+            app:tint="@color/nfc_blue_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/setup_lang_title"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/setup_lang_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical">
+
+            <!-- Card Español -->
+            <LinearLayout
+                android:id="@+id/cardLangEs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_option_card_selected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_code_pill"
+                    android:gravity="center"
+                    android:text="ES"
+                    android:textColor="@color/nfc_blue_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setup_lang_es_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/setup_lang_es_desc"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivLangEsCheck"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Seleccionado"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="visible"
+                    app:tint="@color/nfc_blue_primary" />
+            </LinearLayout>
+
+            <!-- Card English -->
+            <LinearLayout
+                android:id="@+id/cardLangEn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_option_card_unselected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_code_pill"
+                    android:gravity="center"
+                    android:text="EN"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setup_lang_en_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/setup_lang_en_desc"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivLangEnCheck"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Seleccionado"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="gone"
+                    app:tint="@color/nfc_blue_primary" />
+            </LinearLayout>
+
+            <!-- Card Idioma Sistema -->
+            <LinearLayout
+                android:id="@+id/cardLangSystem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_option_card_unselected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:contentDescription="Sistema"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/text_secondary" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setup_lang_system_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/setup_lang_system_desc"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivLangSystemCheck"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Seleccionado"
+                    android:src="@drawable/ic_check_circle"
+                    android:visibility="gone"
+                    app:tint="@color/nfc_blue_primary" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
