@@ -82,7 +82,7 @@ Al pulsar repetidamente cinco veces sobre el titulo de la aplicacion en la panta
 
 ## 5. Repositorio y Enlaces
 
-- Repositorio Oficial en GitHub: https://github.com/arafay1707/TagLock
+- Repositorio Oficial en GitHub: https://github.com/marboldrake/TagLock_MarbolDrake
 - Pagina de Apoyo: https://Ko-fi.com/Marbol077
 
 ---

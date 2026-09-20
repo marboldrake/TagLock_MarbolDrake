@@ -79,7 +79,7 @@ class EasterEggActivity : AppCompatActivity() {
     }
 
     private fun setupCreatorLinks() {
-        val githubUrl = "https://github.com/arafay1707/TagLock"
+        val githubUrl = "https://github.com/marboldrake/TagLock_MarbolDrake"
         val kofiUrl = "https://Ko-fi.com/Marbol077"
 
         binding.btnOpenGithub.setOnClickListener {
